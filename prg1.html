@@ -1,0 +1,70 @@
+<html xmls:th="http://www.thymeleaf.org">
+<head>
+<title>Enroll Customer</title>
+<script type="text/javascript">
+var data= window.locate.search;
+console.log(data);
+function display()
+{
+	var a=document.form1.nm.value;
+	if(a=="")
+	{
+		alert("Please Enter Name");
+	}
+	var b=document.form1.dest.value;
+	if(b=="")
+	{
+		alert("Please Enter Destination");
+	}
+}
+function clearForm() 
+{
+document.getElementById("enrollForm").reset();
+document.getElementById("message").innerText = "";
+}
+</script>
+<style>
+	.container{width:800px;margin:0 auto;}
+</style>
+</head>
+<body bgcolor="veranda">
+<div class="container">
+<center>
+<svg id="barcode"></svg>
+<center>
+<style>
+h1{border-style:solid;background:purple;}
+body{background-image: url('./picture.jpg');
+background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;}	
+</style>
+<h1><font color="cyan">-----------Enroll Customer Details-----------</font></h1>
+<form id="enrollForm" name="form1"  onsubmit="return check()"  th:action="@{/enroll}" th:object="${customer}"method="GET" action="p3.html">
+<table border="1" cellpadding="10" style="width:30%">
+<tr>
+<th bgcolor="yellow"><label>Name:</label></th>
+<td bgcolor="black"><input type="text"  name="nm" th:field="*{name}"/></td><br><br>
+</tr>
+<tr>
+<th bgcolor="yellow"><label>Destination:</label></th>
+<td bgcolor="black"><select>
+	<option>Vadodara</option>
+	<option>Borsad</option>
+	<option>Vasad</option>
+	<option>Asodar</option>
+	<option>Alrasa</option>
+	<option>Nisarya</option></select>
+</td><br><br>
+</tr>
+<tr>
+<td colspan="2" bgcolor="pink"><center><button type="submit" name="reset" value="reset">Reset</button>&nbsp;&nbsp;&nbsp;&nbsp; <button onclick="display();"> Submit </button></td>
+</tr>
+</table>
+</div>
+<center>
+<h2><a href="barcode.html">Generate Barcode</a></h2>
+</form>
+<h3 id="message" th:text="${message}"></h3>
+</body>
+</html>

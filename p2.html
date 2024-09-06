@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Scan or Upload Barcode</title>
+        <script type="text/javascript">
+	function display()
+{
+	var a=document.form1.barcode.value;
+	if(a=="")
+	{
+		alert("Please Enter Barcode Code");
+	}
+	var b=document.form1.img.value;
+	else
+	{
+		alert("Please Enter Barcode Img");
+	}
+
+}
+            function clearForm() {
+                // Clear all form inputs
+                document.getElementById("scanForm1").reset();
+                document.getElementById("scanForm2").reset();
+                // Clear the message paragraph
+                document.getElementById("message").innerText = "";
+            }
+        </script>
+<style>
+h1{border-style:solid;background:purple;}
+body{background-image: url('./bar7.jpg');
+background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;}	
+
+	</style>
+    </head>
+    <body bgcolor="lavender">
+	<center>
+        <h1><font color="cyan">Scan or Upload Barcode</font></h1>
+
+        <!-- Form to enter barcode manually -->
+        <form id="scanForm1" name="form1"  th:action="@{/scanBarcode}" method="post" on submit=" return check()">
+	<table border="1" cellpadding="10">
+	<tr>
+            <th bgcolor="yellow"><label>Enter Barcode:</label></th>
+            <td bgcolor="black"><input type="text" name="barcode" required /></td>
+	</tr>
+  	<tr>
+        <!-- Form to upload barcode image -->
+        <form id="scanForm2" th:action="@{/scan}" method="post" enctype="multipart/form-data">
+            <th bgcolor="yellow"><label>Upload Barcode Image:</label></th>
+            <td bgcolor="black"><input type="file" name="img" accept="image/*"></td>
+	</tr>
+	<tr>
+		<td colspan="2" bgcolor="pink"><center><button type="sumbit" name="reset" value="reset">Reset</button><button onclick="display();"> Submit </button></td>
+	</tr>
+	</table>
+        </form>
+        <h3 id="message" th:text="${message}"></h3>
+	<a href="p3.html">Ticket Details</a>
+</body>
+</html>

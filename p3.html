@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head
+        <title></title>
+<style>
+h1{border-style:solid;background:yellow;}
+body{background-image: url('./bar7.jpg');
+background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;}	
+
+	
+</style>
+    </head>
+    <body>
+        <h1><center><font color="purple">Ticket Details</font></center></h1><br>
+        <h2><p><font color="black" font size="10px" >Ticket Number:978123456789</font><span th:text="${ticket.ticketNumber}"></span></p></h2>
+</tr>
+        <h2><p><font color="black" font size="08">Customer Name:Shivani </font><span th:text="${ticket.customer.name}"></span></p></h2>
+        <h2><p><font color="black" font size="10px">Destination:Borsad</font><span th:text="${ticket.destination}"></span></p></h2>
+        <h2><p><font color="black" font size="10px">Travel Date:06/09/2024</font> <span th:text="${ticket.travelDate}"></span></p></h2>
+       <h2><p><font color="black" font size="10px">Price:24</font><span th:text="${ticket.price}"></span></p></h2>
+    </body>
+</html>
